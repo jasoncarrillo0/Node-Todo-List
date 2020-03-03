@@ -1,0 +1,13 @@
+<%- include("header") %> 
+
+<div class="container-fluid">
+    <form class="item add-list-item" action="/create" method="POST">
+        <div class="container">
+            <!-- the req.body object in Node will access the name field -->
+            <input type="text" autocomplete="off" name="newListName" placeholder="Enter new list to create">
+            <button class="btn-small" type="submit">+</button>
+        </div>
+    </form>
+</div>
+
+<%- include("footer") %> 

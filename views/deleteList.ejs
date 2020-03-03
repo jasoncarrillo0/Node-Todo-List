@@ -1,0 +1,20 @@
+<%- include("header") %> 
+
+<div class="container-fluid">
+    <div class="box deleted-item-section">
+
+        <% if (allListsObj) { %>
+            <% allListsObj.forEach(function(doc) { %>
+                <form action="/deletelist" method="POST">
+                    <div class="item">
+                        <input type="checkbox" name="checkbox" value="<%= doc._id %>" onChange="this.form.submit()">
+                        <p><%= doc.name %></p>
+                    </div>
+                </form>
+            <% }); %>
+        <% } %>
+
+    </div>
+</div>
+
+<%- include("footer") %> 

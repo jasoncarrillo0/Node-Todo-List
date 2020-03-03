@@ -1,0 +1,30 @@
+<%- include("header") %> 
+
+<div class="container">
+    <div class="box" id="heading">
+        <h1> <%= functions.formatTitle(listTitle) %> </h1>
+    </div>
+    
+    <div class="box">
+
+        <% addedItems.forEach(function(entry) { %>
+            <form action="/delete" method="POST">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= entry._id %>" onChange="this.form.submit()">
+                    <p class="align-left"><%= entry.toDoItem %></p>
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>">
+            </form>
+        <% }); %>
+        
+        <form class="item" action="/" method="POST">
+            <input type="text" autocomplete="off" name="newListItem" placeholder="Enter new to-do item">
+            <!-- Here the name of the button helps to understand content of the req.body. The body is a JSON
+            Object that has a field for the button. the key is name (listType), and value (listTitle). -->
+            <button class="btn-small" type="submit" name="listType" value="<%= listTitle %>">+</button> 
+        </form>
+    </div>
+</div>
+
+<%- include("footer") %> 
+    
